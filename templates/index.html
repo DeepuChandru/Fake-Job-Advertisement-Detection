@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-VA-Compatible" contents="ie_edge">
+        <title>website</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+        <script type="text/javascript">
+            function setForm(value) 
+            {
+                if(value == 'webform')
+                    {
+                        document.getElementById('webform').style='display:block;';
+                        document.getElementById('emailform').style='display:none;';
+                    }
+                    else 
+                    {
+            
+                        document.getElementById('emailform').style = 'display:block;';
+                        document.getElementById('webform').style = 'display:none;';
+                    }
+            }
+            
+            </script>
+    </head>
+    <body>
+            <h1>Fake job detection</h1>
+            <div class="container">
+                <label>Select where you saw the job ad</label><br>
+                <select id="select1" onchange="setForm(value)">
+                    <option value="webform">Website</option>
+                    <option value="emailform">E-mail</option>
+                </select>
+            </div>
+            <div id="webform">
+                <form action="/" method="POST">
+                <label>Select the website you saw the ad<label>
+                <select required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="Naukri">Naukri</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Monster">Monster</option>
+                </select><br><br>
+                <label>Enter company name</label>    
+                <input type="text" name="companyname" id="companyname" required><br><br>
+                <label>Enter account name</label>    
+                <input type="text" name="accountname" id="accountname" required><br><br>
+                <label>Enter company location</label>    
+                <input type="text" name="location" id="location" required><br><br>
+                <label>Enter state</label>    
+                <input type="text" name="state" id="state" required><br><br>
+                <label>Enter country</label>    
+                <input type="text" name="country" id="country" required><br><br>
+                <label>Enter job name</label>    
+                <input type="text" name="jobname" id="jobname" required><br><br>
+                <label>Enter job id</label>    
+                <input type="text" name="jobid" id="jobid"><br><br>
+                <label for="postdate">Enter job posted date</label><br>
+                <input type="date" id="start" name="postdate" value="2020-01-01" min="2020-01-01" max="2021-06-16" required><br><br>
+                <label for="posttime">Select a time:</label><br>
+                <input type="time" id="posttime" name="posttime"><br><br>
+                <label>Were you asked for payment?</label><br><br>    
+                <input type="radio" id="yes" name="payment" value="yes" required>
+                <label for="yes">Yes</label><br><br>
+                <input type="radio" id="no" name="payment" value="no">
+                <label for="no">No</label><br>
+                <input type="submit" value="Submit">
+            </form>
+            </div>
+            <div id="emailform" style="display: none">
+            <form action="/" method="POST">
+                <label for="email">Enter mail-id you received the job ad</label><br>
+                <input type="email" id="email" name="email" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
