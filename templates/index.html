@@ -26,55 +26,58 @@
     </head>
     <body>
             <h1>Fake job detection</h1>
-            <div class="container">
-                <label>Select where you saw the job ad</label><br>
-                <select id="select1" onchange="setForm(value)">
-                    <option value="webform">Website</option>
-                    <option value="emailform">E-mail</option>
-                </select>
-            </div>
-            <div id="webform">
                 <form action="/" method="POST">
-                <label>Select the website you saw the ad<label>
-                <select required>
-                    <option value="">--Please choose an option--</option>
-                    <option value="Naukri">Naukri</option>
-                    <option value="Indeed">Indeed</option>
-                    <option value="LinkedIn">LinkedIn</option>
-                    <option value="Monster">Monster</option>
-                </select><br><br>
+                <div>
                 <label>Enter company name</label>    
                 <input type="text" name="companyname" id="companyname" required><br><br>
-                <label>Enter account name</label>    
-                <input type="text" name="accountname" id="accountname" required><br><br>
                 <label>Enter company location</label>    
                 <input type="text" name="location" id="location" required><br><br>
                 <label>Enter state</label>    
                 <input type="text" name="state" id="state" required><br><br>
                 <label>Enter country</label>    
                 <input type="text" name="country" id="country" required><br><br>
+                <label>Enter pincode (if available)</label>    
+                <input type="number" name="pincode" id="pincode"><br><br>
                 <label>Enter job name</label>    
                 <input type="text" name="jobname" id="jobname" required><br><br>
                 <label>Enter job id</label>    
                 <input type="text" name="jobid" id="jobid"><br><br>
-                <label for="postdate">Enter job posted date</label><br>
-                <input type="date" id="start" name="postdate" value="2020-01-01" min="2020-01-01" max="2021-06-16" required><br><br>
-                <label for="posttime">Select a time:</label><br>
-                <input type="time" id="posttime" name="posttime"><br><br>
-                <label>Were you asked for payment?</label><br><br>    
+                <label>Were you asked for payment?</label><br>   
                 <input type="radio" id="yes" name="payment" value="yes" required>
-                <label for="yes">Yes</label><br><br>
+                <label for="yes">Yes</label><br>
                 <input type="radio" id="no" name="payment" value="no">
-                <label for="no">No</label><br>
+                <label for="no">No</label><br><br>
+                <labe>Where did you see the ad?</label>
+                <select id="select1" onchange="setForm(value)" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="webform">Website</option>
+                    <option value="emailform">E-mail</option>
+                </select>
+                </div>
+                <div id="webform" style="display: none">
+                    <label>Select the website you saw the ad<label>
+                        <select required>
+                            <option value="">--Please choose an option--</option>
+                            <option value="Naukri">Naukri</option>
+                            <option value="Indeed">Indeed</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Monster">Monster</option>
+                        </select><br><br>
+                    <label>Enter account name</label>    
+                    <input type="text" name="accountname" id="accountname" required><br><br>
+                    <label>Enter job posted date</label><br>
+                    <input type="date" id="start" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
+                    <label>Select a time:</label><br>
+                    <input type="time" id="posttime" name="posttime"><br>
+                </div>
+                <div id="emailform" style="display: none">
+                    <label>Enter mail-id you received the job ad</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
                 <input type="submit" value="Submit">
-            </form>
-            </div>
-            <div id="emailform" style="display: none">
-            <form action="/" method="POST">
-                <label for="email">Enter mail-id you received the job ad</label><br>
-                <input type="email" id="email" name="email" required>
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+                </div>
+                </form>
+        
     </body>
 </html>

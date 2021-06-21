@@ -1,7 +1,7 @@
 h1{
     text-align: center;
 }
-input[type=text],input[type=date],input[type=time],input[type=email],select{
+input[type=text],input[type=date],input[type=time],input[type=email],input[type=number],select{
     width: 100%;
     padding: 8px 20px;
     margin: 3px 0;
