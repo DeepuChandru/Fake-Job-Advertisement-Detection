@@ -13,15 +13,22 @@
                     {
                         document.getElementById('webform').style='display:block;';
                         document.getElementById('emailform').style='display:none;';
+                        document.getElementById('accountname').required=true;
+                        document.getElementById('website').required=true;
+                        document.getElementById('postdate').required=true;
+                        document.getElementById("email").required = false;
                     }
                     else 
                     {
             
                         document.getElementById('emailform').style = 'display:block;';
                         document.getElementById('webform').style = 'display:none;';
+                        document.getElementById('accountname').required=false;
+                        document.getElementById('postdate').required=false;
+                        document.getElementById('website').required=false;
+                        document.getElementById("email").required = true;
                     }
             }
-            
             </script>
     </head>
     <body>
@@ -48,7 +55,7 @@
                 <input type="radio" id="no" name="payment" value="no">
                 <label for="no">No</label><br><br>
                 <labe>Where did you see the ad?</label>
-                <select id="select1" onchange="setForm(value)" required>
+                <select id="select1" onchange="setForm(value)" name="platform" required>
                     <option value="">--Please choose an option--</option>
                     <option value="webform">Website</option>
                     <option value="emailform">E-mail</option>
@@ -56,7 +63,7 @@
                 </div>
                 <div id="webform" style="display: none">
                     <label>Select the website you saw the ad<label>
-                        <select required>
+                        <select id="website" name="website" required>
                             <option value="">--Please choose an option--</option>
                             <option value="Naukri">Naukri</option>
                             <option value="Indeed">Indeed</option>
@@ -66,18 +73,16 @@
                     <label>Enter account name</label>    
                     <input type="text" name="accountname" id="accountname" required><br><br>
                     <label>Enter job posted date</label><br>
-                    <input type="date" id="start" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
+                    <input type="date" id="postdate" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
                     <label>Select a time:</label><br>
-                    <input type="time" id="posttime" name="posttime"><br>
+                    <input type="time" id="posttime" name="posttime"><br><br>
+                    <input type="submit" value="Submit">
                 </div>
                 <div id="emailform" style="display: none">
                     <label>Enter mail-id you received the job ad</label><br>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div>
-                <input type="submit" value="Submit">
+                    <input type="email" id="email" name="email" required><br><br>
+                    <input type="submit" value="Submit">
                 </div>
                 </form>
-        
     </body>
 </html>
