@@ -6,119 +6,26 @@
         <meta http-equiv="X-VA-Compatible" contents="ie_edge">
         <title>website</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
-        <script type="text/javascript">
-            function setForm(value) 
-            {
-                if(value == 'webform')
-                    {
-                        document.getElementById('webform').style='display:block;';
-                        document.getElementById('emailform').style='display:none;';
-                        document.getElementById('accountname').required=true;
-                        document.getElementById('website').required=true;
-                        document.getElementById('postdate').required=true;
-                        document.getElementById("email").required = false;
-                    }
-                    else 
-                    {
-            
-                        document.getElementById('emailform').style = 'display:block;';
-                        document.getElementById('webform').style = 'display:none;';
-                        document.getElementById('accountname').required=false;
-                        document.getElementById('postdate').required=false;
-                        document.getElementById('website').required=false;
-                        document.getElementById("email").required = true;
-                    }
-            }
-            </script>
     </head>
-    <nav id="navbar">
-        <strong id="title">UNLOCK</strong>
-        <a href="#profile">Home</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
     <body>
-            <h1>Fake job detection</h1>
-                <form action="/" method="POST">
-                <div>
-                <label>Enter company name</label>    
-                <input type="text" name="companyname" id="companyname" required><br><br>
-                <label>Enter company location</label>    
-                <input type="text" name="location" id="location" required><br><br>
-                <label>Enter state</label>    
-                <input type="text" name="state" id="state" required><br><br>
-                <label>Enter country</label>    
-                <input type="text" name="country" id="country" required><br><br>
-                <label>Enter pincode (if available)</label>    
-                <input type="number" name="pincode" id="pincode"><br><br>
-                <label>Enter job name</label>    
-                <input type="text" name="jobname" id="jobname" required><br><br>
-                <label>Enter job id</label>    
-                <input type="text" name="jobid" id="jobid"><br><br>
-                <label>Were you asked for payment?</label><br>   
-                <input type="radio" id="yes" name="payment" value="yes" required>
-                <label for="yes">Yes</label><br>
-                <input type="radio" id="no" name="payment" value="no">
-                <label for="no">No</label><br><br>
-                <labe>Where did you see the ad?</label>
-                <select id="select1" onchange="setForm(value)" name="platform" required>
-                    <option value="">--Please choose an option--</option>
-                    <option value="webform">Website</option>
-                    <option value="emailform">E-mail</option>
-                </select>
-                </div>
-                <div id="webform" style="display: none">
-                    <label>Select the website you saw the ad<label>
-                        <select id="website" name="website" required>
-                            <option value="">--Please choose an option--</option>
-                            <option value="Naukri">Naukri</option>
-                            <option value="Indeed">Indeed</option>
-                            <option value="LinkedIn">LinkedIn</option>
-                            <option value="Monster">Monster</option>
-                        </select><br><br>
-                    <label>Enter account name</label>    
-                    <input type="text" name="accountname" id="accountname" required><br><br>
-                    <label>Enter job posted date</label><br>
-                    <input type="date" id="postdate" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
-                    <label>Select a time:</label><br>
-                    <input type="time" id="posttime" name="posttime"><br><br>
-                </div>
-                <div id="emailform" style="display: none">
-                    <label>Enter mail-id you received the job ad</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-                </div>
-                <div>
-                <input type="submit" value="Submit">
-                </div>
-                </form>
+        <header class="fix">
+        <video src="{{url_for('static',filename='video/background.mkv')}}" autoplay loop muted class="bg-video"></video>
+        <nav id="navbar">
+            <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
+            <a id="link" href="#profile">Home</a>
+            <a id="link" href="#blogs">Blogs</a>
+            <a id="link" href="#about">About</a>
+            <a id="link" href="#contact">Contact</a>
+            </ul>
+        </nav>
+        
+        <div class="banner">
+            <h2>Fake Job <span>Detection</span></h2>
+            <p>Check whether a job is fake or real</p>
+            <a href="/form"><button class="Proceed">Proceed</button></a>
+        </div>
+        </header>   
+        
     </body>
-    <section id=about>
-        <h3> <B> ABOUT </B> </h3>
-        <p><b>  OUR VISION</b><br>
-            <li>Our mission is to improve our security, business productivity and growth.<br></li>
-            <li>To be a process driven, managed and profitable organization.<br></li>
-            <li>To create open work environment that encourages personal & company growth.<br></li>
-            <br>
-            <br><b>  OUR MISSION</b><br>
-            <li>To maintain stability and growth of the organization.<br></li>
-            <li>To enhance efficiency, productivity and capability of businesses.</li>
-            <li>To be a strong player in Software industry & offer great value to our clients.</p></li>
-     </section>
-     <section id=Contact>
-        <h3> <B> CONTACT US </B> </h3>
-        
-        <p><b>Phone Number: </b>044 4392 3900, 044 4678 3133, +91 84596 28771   
-           <br>
-           <b>Email ID: </b> unlock21@gmail.com
-           <br>
-           <b>Website/URL: </b>unlock2021.com</p>  
-        </section>
-        
-        <footer>
-          <div id="copyright">
-            <h4>Copyright 2021</h4>
-          </div>
-        </footer>
-        
+    
 </html>

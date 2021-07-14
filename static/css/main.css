@@ -1,7 +1,8 @@
-h1{
+  h1{
     text-align: center;
-}
-input[type=text],input[type=date],input[type=time],input[type=email],input[type=number],select{
+  }
+
+  input[type=text],input[type=date],input[type=time],input[type=email],input[type=number],select{
     width: 100%;
     padding: 8px 20px;
     margin: 3px 0;
@@ -10,7 +11,62 @@ input[type=text],input[type=date],input[type=time],input[type=email],input[type=
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+  .bg-video{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    
+  }
+
+  .banner{
+    position: absolute;
+    top:35%;
+    text-align: center;
+    left: 25%;
+  }
+
+  .banner h2{
+    font-size: 80px;
+    color: white;
+    margin: 0;
+  }
+
+  .banner p{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+  }
   
+  .banner span{
+    color: orange;
+  }
+
+  .Proceed{
+    display: inline-block;
+    background: transparent;
+    margin-top: 3%;
+    border: 3px solid white;
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 10px 25px;
+    color: white;
+    border-radius: 25px;
+  }
+
+  .Proceed:hover{
+    color: orange;
+    border: 3px solid orange;  
+  }
+
+  .fix{
+    clear: both;
+    overflow: hidden;
+  }
+
   input[type=submit] {
     width: 20%;
     background-color: #4CAF50;
@@ -25,16 +81,33 @@ input[type=text],input[type=date],input[type=time],input[type=email],input[type=
   input[type=submit]:hover {
     background-color: #45a049;
   }
+
+
   
-  div {
+  .formdiv,#webform,#emailform,#submitdiv{
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
     margin: 0 30%;
   }
 
+ 
+
   body{
-    margin-top: 100px;
+    /* margin-top: 100px; */
+    margin-left: 0;
+    margin-top:70px ;
+    padding: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .logo{
+    height: 100%;
+    width: 15%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin:0;
   }
 
   #navbar {
@@ -45,35 +118,26 @@ input[type=text],input[type=date],input[type=time],input[type=email],input[type=
     display: flex;
     flex-direction: row;
     justify-content:flex-end;
-    background-color: white; 
-    box-shadow: 0px 5px 5px rgb(231, 231, 231);}
+    background-color: rgb(0, 0, 0); 
+    /* overflow: hidden; */
+    /* box-shadow: 0px 5px 5px rgb(231, 231, 231); */
+    }
  
-    #navbar a {
+     #link {
     text-decoration: none;
     display: block;
     padding: 1em;
     font-size: 1.5em;
     font-weight: bold;
-    color:rgb(33, 47, 122);
+    color:rgb(255, 255, 255);
     }
- 
-   #navbar a:hover {
-   background: #7c838a;
-   color:rgb(255, 255, 255);
-   }
- 
-   #title {
-   /* margin-top:90px; */
-   font-size:60px;
-   margin: 0;
-   padding-right: 50%;
-   /* margin-left: 20px;; */
-   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   color:rgb(38, 47, 88);
-   /* align-items: flex-end;	 */
-   }
- 
-   #about{
+
+    #link:hover {
+      background: #ff9945;
+      color:rgb(0, 0, 0);
+      }
+
+       #about{
    margin-top:50px;
    width:100%;
    padding-left: 10px;
@@ -86,6 +150,8 @@ input[type=text],input[type=date],input[type=time],input[type=email],input[type=
    margin-bottom: 10px;
    color:black;    
    }
+
+
  
    #contact{
    margin-top:0px;
@@ -95,22 +161,23 @@ input[type=text],input[type=date],input[type=time],input[type=email],input[type=
    display:flex;
    flex-direction: column;
    text-align: justify;
-   background-color: #4ab7ff;
+   background-color: #dfa678;
    left:0px;
    right:0%;
    margin-bottom: 50px;
-   color:black;    
+   color:rgb(0, 0, 0);    
    }
  
    #copyright{
    display: flex;
    flex-direction: column;
+   margin: 0 30%;
    align-items:center;
    bottom:0px;
-   position: fixed;
-   left: 550px;
-   background-color: #ffffff;
+   position: relative;
+   background-color: #000000;
    width:40%;
    padding:0px;
- }
- 
+   color:white;
+   }
+

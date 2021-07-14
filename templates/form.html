@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-VA-Compatible" contents="ie_edge">
+        <title>website</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+        <script>
+            function setForm(value) 
+            {
+                if(value == 'webform')
+                    {
+                        document.getElementById('webform').style='display:block;';
+                        document.getElementById('emailform').style='display:none;';
+                        document.getElementById('accountname').required=true;
+                        document.getElementById('website').required=true;
+                        document.getElementById('postdate').required=true;
+                        document.getElementById("email").required = false;
+                    }
+                    else 
+                    {
+            
+                        document.getElementById('emailform').style = 'display:block;';
+                        document.getElementById('webform').style = 'display:none;';
+                        document.getElementById('accountname').required=false;
+                        document.getElementById('postdate').required=false;
+                        document.getElementById('website').required=false;
+                        document.getElementById("email").required = true;
+                    }
+            }
+            var stateObject = {
+"India": { "TamilNadu": ["Chennai", "Madurai"],
+"Kerala": ["Thiruvananthapuram", "Palakkad"],
+"Goa": ["North Goa", "South Goa"],
+},
+"Australia": {
+"South Australia": ["Dunstan", "Mitchell"],
+"Victoria": ["Altona", "Euroa"]
+}, "Canada": {
+"Alberta": ["Acadia", "Bighorn"],
+"Columbia": ["Washington", ""]
+},
+}
+window.onload = function () {
+var countySel = document.getElementById("country"),
+stateSel = document.getElementById("state"),
+districtSel = document.getElementById("location");
+for (var country in stateObject) {
+countySel.options[countySel.options.length] = new Option(country, country);
+}
+countySel.onchange = function () {
+stateSel.length = 1; // remove all options bar first
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done 
+for (var state in stateObject[this.value]) {
+stateSel.options[stateSel.options.length] = new Option(state, state);
+}
+}
+countySel.onchange(); // reset in case page is reloaded
+stateSel.onchange = function () {
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done 
+var district = stateObject[countySel.value][this.value];
+for (var i = 0; i < district.length; i++) {
+districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+}
+}
+}
+        </script>
+    </head>
+    <body>
+    <!-- <div><a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a></div> -->
+        <nav id="navbar">
+            <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
+            <a id="link" href="#profile">Home</a>
+            <a id="link" href="#blogs">Blogs</a>
+            <a id="link" href="#about">About</a>
+            <a id="link" href="#contact">Contact</a>
+            </ul>
+        </nav>
+            <br>
+            <h1>Fake job detection</h1>
+                <form action="/" method="POST">
+                <div class="formdiv">
+                <label>Enter company name</label>    
+                <input type="text" name="companyname" id="companyname" required><br><br>
+                <label>Enter country</label>
+                <select name="country" id="country" size="1">
+                    <option value="" selected="selected">Select Country</option>
+                    
+                </select><br><br>    
+                <label>Enter state</label>    
+                <select name="state" id="state" size="1">
+                    <option value="" selected="selected">Please select Country first</option>
+                </select><br><br>
+                <label>Enter company location</label>  
+                <select name="city" id="location" size="1">
+                    <option value="" selected="selected">Please select State first</option>
+                </select><br><br>  
+                <label>Enter pincode (if available)</label>    
+                <input type="number" name="pincode" id="pincode"><br><br>
+                <label>Enter job name</label>    
+                <input type="text" name="jobname" id="jobname" required><br><br>
+                <label>Enter job id</label>    
+                <input type="text" name="jobid" id="jobid"><br><br>
+                <label>Were you asked for payment?</label><br>   
+                <input type="radio" id="yes" name="payment" value="yes" required>
+                <label for="yes">Yes</label><br>
+                <input type="radio" id="no" name="payment" value="no">
+                <label for="no">No</label><br><br>
+                <labe>Where did you see the ad?</label>
+                <select id="select1" onchange="setForm(value)" name="platform" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="webform">Website</option>
+                    <option value="emailform">E-mail</option>
+                </select>
+                </div>
+                <div id="webform" style="display: none">
+                    <label>Select the website you saw the ad<label>
+                        <select id="website" name="website" required>
+                            <option value="">--Please choose an option--</option>
+                            <option value="Naukri">Naukri</option>
+                            <option value="Indeed">Indeed</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Monster">Monster</option>
+                        </select><br><br>
+                    <label>Enter account name</label>    
+                    <input type="text" name="accountname" id="accountname" required><br><br>
+                    <label>Enter job posted date</label><br>
+                    <input type="date" id="postdate" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
+                    <label>Select a time:</label><br>
+                    <input type="time" id="posttime" name="posttime"><br><br>
+                </div>
+                <div id="emailform" style="display: none">
+                    <label>Enter mail-id you received the job ad</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                </div>
+                <div id="submitdiv">
+                <input type="submit" value="Submit">
+                </div>
+                </form>
+    </body>
+    <section id=about>
+        <h3> <B> ABOUT </B> </h3>
+        <p><b>  OUR VISION</b><br>
+            <li>Our mission is to improve our security, business productivity and growth.<br></li>
+            <li>To be a process driven, managed and profitable organization.<br></li>
+            <li>To create open work environment that encourages personal & company growth.<br></li>
+            <br>
+            <br><b>  OUR MISSION</b><br>
+            <li>To maintain stability and growth of the organization.<br></li>
+            <li>To enhance efficiency, productivity and capability of businesses.</li>
+            <li>To be a strong player in Software industry & offer great value to our clients.</p></li>
+     </section>
+     <section id=Contact>
+        <h3> <B> CONTACT US </B> </h3>
+        
+        <p><b>Phone Number: </b>044 4392 3900, 044 4678 3133, +91 84596 28771   
+           <br>
+           <b>Email ID: </b> unlock21@gmail.com
+           <br>
+           <b>Website/URL: </b>unlock2021.com</p>  
+        </section>
+        
+        <footer>
+          <div id="copyright">
+            <h4>Copyright 2021</h4>
+          </div>
+        </footer>
+        
+</html>
