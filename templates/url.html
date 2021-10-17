@@ -6,29 +6,25 @@
         <meta http-equiv="X-VA-Compatible" contents="ie_edge">
         <title>website</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+        
+ 
     </head>
     <body>
-        <header class="fix">
-        <video src="{{url_for('static',filename='video/background.mkv')}}" autoplay loop muted class="bg-video"></video>
         <nav id="navbar">
             <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
             <a id="link" href="#profile">Home</a>
             <a id="link" href="#blogs">Blogs</a>
             <a id="link" href="#about">About</a>
             <a id="link" href="#contact">Contact</a>
-            </ul>
         </nav>
-        
-        <div class="banner">
-            <h2>Fake Job <span>Detection</span></h2>
-            <p>Check whether a job is fake or real</p>
-            <table class="buttons">
-            <tr>
-            <td><a href="/url"><button class="navbutton">Verify with url</button></a></td>
-            <td class="td2"><a href="/form"><button class="navbutton">Verify with Job Search</button></a></td>
-            </tr>
-            </table>
-        </div>
-        </header>  
+        <!-- <div class="banner"> -->
+            <h1>Enter URL</h1>
+            <form action="/validate" method="POST">
+                <div id="webform">
+                <input type="text" id="urlinput" name="url" />
+                <input value="submit" type="submit" />
+                </div>
+            </form> 
+        <!-- </div> -->
     </body>
 </html>

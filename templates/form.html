@@ -29,48 +29,10 @@
                         document.getElementById("email").required = true;
                     }
             }
-            var stateObject = {
-"India": { "TamilNadu": ["Chennai", "Madurai"],
-"Kerala": ["Thiruvananthapuram", "Palakkad"],
-"Goa": ["North Goa", "South Goa"],
-},
-"Australia": {
-"South Australia": ["Dunstan", "Mitchell"],
-"Victoria": ["Altona", "Euroa"]
-}, "Canada": {
-"Alberta": ["Acadia", "Bighorn"],
-"Columbia": ["Washington", ""]
-},
-}
-window.onload = function () {
-var countySel = document.getElementById("country"),
-stateSel = document.getElementById("state"),
-districtSel = document.getElementById("location");
-for (var country in stateObject) {
-countySel.options[countySel.options.length] = new Option(country, country);
-}
-countySel.onchange = function () {
-stateSel.length = 1; // remove all options bar first
-districtSel.length = 1; // remove all options bar first
-if (this.selectedIndex < 1) return; // done 
-for (var state in stateObject[this.value]) {
-stateSel.options[stateSel.options.length] = new Option(state, state);
-}
-}
-countySel.onchange(); // reset in case page is reloaded
-stateSel.onchange = function () {
-districtSel.length = 1; // remove all options bar first
-if (this.selectedIndex < 1) return; // done 
-var district = stateObject[countySel.value][this.value];
-for (var i = 0; i < district.length; i++) {
-districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
-}
-}
-}
-        </script>
+            </script>
     </head>
     <body>
-    <!-- <div><a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a></div> -->
+        
         <nav id="navbar">
             <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
             <a id="link" href="#profile">Home</a>
@@ -81,23 +43,23 @@ districtSel.options[districtSel.options.length] = new Option(district[i], distri
         </nav>
             <br>
             <h1>Fake job detection</h1>
-                <form action="/" method="POST">
+                <form action="/form" method="POST">
+                {{ form.csrf_token}}
                 <div class="formdiv">
                 <label>Enter company name</label>    
                 <input type="text" name="companyname" id="companyname" required><br><br>
-                <label>Enter country</label>
-                <select name="country" id="country" size="1">
-                    <option value="" selected="selected">Select Country</option>
-                    
-                </select><br><br>    
-                <label>Enter state</label>    
-                <select name="state" id="state" size="1">
-                    <option value="" selected="selected">Please select Country first</option>
-                </select><br><br>
-                <label>Enter company location</label>  
-                <select name="city" id="location" size="1">
-                    <option value="" selected="selected">Please select State first</option>
-                </select><br><br>  
+                <div class="form-group">
+                    <label for="email">Country:</label>
+                        {{ form.country(class="form-control") }}
+                </div><br>
+                <div class="form-group">
+                    <label for="email">State:</label>
+                        {{ form.state(class="form-control")}}
+                </div><br>
+                <div class="form-group">
+                    <label for="email">City:</label>
+                        {{ form.city(class="form-control")}} 
+                </div><br>
                 <label>Enter pincode (if available)</label>    
                 <input type="number" name="pincode" id="pincode"><br><br>
                 <label>Enter job name</label>    
@@ -140,6 +102,41 @@ districtSel.options[districtSel.options.length] = new Option(district[i], distri
                 <input type="submit" value="Submit">
                 </div>
                 </form>
+                <script>
+                    country_select = document.getElementById('country');
+                    state_select = document.getElementById('state');
+                    city_select = document.getElementById('city');
+             
+                    country_select.onchange = function(){
+                    country = country_select.value;
+                    fetch('state/' + country).then(function(response)
+                    {
+                        response.json().then(function(data) 
+                        {
+                            optionHTML = '';
+                            for (state of data.statecountry) 
+                            {
+                                optionHTML += '<option value="' + state.id +'">' + state.name + '</option>'
+                            }
+                            state_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                    state_select.onchange = function(){
+                    city = state_select.value; 
+                    fetch('city/' + city).then(function(response){
+                    response.json().then(function(data) 
+                    {
+                        optionHTML = '';
+                        for (city_rs of data.citylist) 
+                        {
+                            optionHTML += '<option value="' + city_rs.id +'">' + city_rs.name + '</option>'
+                        }
+                        city_select.innerHTML = optionHTML;
+                            });
+                        });
+                    }
+                </script>
     </body>
     <section id=about>
         <h3> <B> ABOUT </B> </h3>
