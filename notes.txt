@@ -1,0 +1,1 @@
+check json in backend flask and pass to another html page through jujuntu syntax

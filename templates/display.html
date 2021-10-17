@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Display
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <table class="table table-striped">
+            {% for i in joblist1 %}
+            <tr>
+                <div>{% for j in i%}
+                        {% if (i[j]==0) %}
+                            <td>{{Fake}}</td>
+                        {% elif (i[j]==1) %}
+                            <td>{{Authenticated}}</td>
+                        {% else %}
+                            <td>{{i[j]}}</td>
+                        {% endif %}
+                {% endfor %}
+                </tr>
+            </div>
+            {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
