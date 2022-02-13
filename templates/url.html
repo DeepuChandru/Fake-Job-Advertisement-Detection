@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta http-equiv="X-VA-Compatible" contents="ie_edge">
-        <title>website</title>
+        <title>Reveal</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
-        
- 
     </head>
     <body>
         <nav id="navbar">
@@ -15,16 +13,44 @@
             <a id="link" href="#profile">Home</a>
             <a id="link" href="#blogs">Blogs</a>
             <a id="link" href="#about">About</a>
-            <a id="link" href="#contact">Contact</a>
+            <a id="link" href="#Contact">Contact</a>
         </nav>
-        <!-- <div class="banner"> -->
+        <div id="urlsubmit">
             <h1>Enter URL</h1>
+            <p class="note">for Indeed website only</p>
             <form action="/validate" method="POST">
                 <div id="webform">
                 <input type="text" id="urlinput" name="url" />
                 <input value="submit" type="submit" />
                 </div>
-            </form> 
-        <!-- </div> -->
+            </form>    
+        </div>
     </body>
+    <section id=about>
+        <h3> <B> ABOUT </B> </h3>
+        <p><b>  OUR VISION</b><br>
+            <li>Our mission is to improve our security, business productivity and growth.<br></li>
+            <li>To be a process driven, managed and profitable organization.<br></li>
+            <li>To create open work environment that encourages personal & company growth.<br></li>
+            <br>
+            <br><b>  OUR MISSION</b><br>
+            <li>To maintain stability and growth of the organization.<br></li>
+            <li>To enhance efficiency, productivity and capability of businesses.</li>
+            <li>To be a strong player in Software industry & offer great value to our clients.</p></li>
+     </section>
+     <section id=Contact>
+        <h3> <B> CONTACT US </B> </h3>
+        
+        <p><b>Phone Number: </b>044 4392 3900, 044 4678 3133, +91 84596 28771   
+           <br>
+           <b>Email ID: </b> unlock21@gmail.com
+           <br>
+           <b>Website/URL: </b>unlock2021.com</p>  
+        </section>
+        
+        <footer>
+          <div id="copyright">
+            <h4>Copyright 2021</h4>
+          </div>
+        </footer>
 </html>

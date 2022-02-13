@@ -1,4 +1,4 @@
-  h1{
+  h1,.note{
     text-align: center;
   }
 
@@ -11,6 +11,8 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+ 
 
   .bg-video{
     position: absolute;
@@ -92,13 +94,18 @@
     background-color: #45a049;
   }
 
-
   
-  .formdiv,#webform,#emailform,#submitdiv{
+  #urlsubmit {
+    margin: auto;
+    padding: 10px;
+  }
+  
+  .formdiv,.search_select_box,#webform,#emailform,#submitdiv{
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
     margin: 0 30%;
+    
   }
 
  

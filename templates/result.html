@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            result
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-VA-Compatible" contents="ie_edge">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav id="navbar">
+            <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
+            <a id="link" href="#profile">Home</a>
+            <a id="link" href="#blogs">Blogs</a>
+            <a id="link" href="#about">About</a>
+            <a id="link" href="#contact">Contact</a>
+            </ul>
+        </nav>
+            <br>
+        <div>
+            <p>
+                {{pred}}
+            </p>
+        </div>
+    </body>
+    <section id=about>
+        <h3> <B> ABOUT </B> </h3>
+        <p><b>  OUR VISION</b><br>
+            <li>Our mission is to improve our security, business productivity and growth.<br></li>
+            <li>To be a process driven, managed and profitable organization.<br></li>
+            <li>To create open work environment that encourages personal & company growth.<br></li>
+            <br>
+            <br><b>  OUR MISSION</b><br>
+            <li>To maintain stability and growth of the organization.<br></li>
+            <li>To enhance efficiency, productivity and capability of businesses.</li>
+            <li>To be a strong player in Software industry & offer great value to our clients.</p></li>
+     </section>
+     <section id=Contact>
+        <h3> <B> CONTACT US </B> </h3>
+        
+        <p><b>Phone Number: </b>044 4392 3900, 044 4678 3133, +91 84596 28771   
+           <br>
+           <b>Email ID: </b> unlock21@gmail.com
+           <br>
+           <b>Website/URL: </b>unlock2021.com</p>  
+        </section>
+        
+        <footer>
+          <div id="copyright">
+            <h4>Copyright 2021</h4>
+          </div>
+        </footer>
+</html>

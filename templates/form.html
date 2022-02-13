@@ -4,35 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <meta http-equiv="X-VA-Compatible" contents="ie_edge">
-        <title>website</title>
+        <title>Reveal</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
-        <script>
-            function setForm(value) 
-            {
-                if(value == 'webform')
-                    {
-                        document.getElementById('webform').style='display:block;';
-                        document.getElementById('emailform').style='display:none;';
-                        document.getElementById('accountname').required=true;
-                        document.getElementById('website').required=true;
-                        document.getElementById('postdate').required=true;
-                        document.getElementById("email").required = false;
-                    }
-                    else 
-                    {
-            
-                        document.getElementById('emailform').style = 'display:block;';
-                        document.getElementById('webform').style = 'display:none;';
-                        document.getElementById('accountname').required=false;
-                        document.getElementById('postdate').required=false;
-                        document.getElementById('website').required=false;
-                        document.getElementById("email").required = true;
-                    }
-            }
-            </script>
+        <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     </head>
     <body>
-        
         <nav id="navbar">
             <a href="#" class="logolink" target="_self"><img src="{{url_for('static',filename='images/logo.jpeg')}}" alt="logo" class="logo"></a>
             <a id="link" href="#profile">Home</a>
@@ -41,102 +20,98 @@
             <a id="link" href="#contact">Contact</a>
             </ul>
         </nav>
-            <br>
-            <h1>Fake job detection</h1>
-                <form action="/form" method="POST">
-                {{ form.csrf_token}}
-                <div class="formdiv">
-                <label>Enter company name</label>    
-                <input type="text" name="companyname" id="companyname" required><br><br>
-                <div class="form-group">
-                    <label for="email">Country:</label>
-                        {{ form.country(class="form-control") }}
-                </div><br>
-                <div class="form-group">
-                    <label for="email">State:</label>
-                        {{ form.state(class="form-control")}}
-                </div><br>
-                <div class="form-group">
-                    <label for="email">City:</label>
-                        {{ form.city(class="form-control")}} 
-                </div><br>
-                <label>Enter pincode (if available)</label>    
-                <input type="number" name="pincode" id="pincode"><br><br>
-                <label>Enter job name</label>    
-                <input type="text" name="jobname" id="jobname" required><br><br>
-                <label>Enter job id</label>    
-                <input type="text" name="jobid" id="jobid"><br><br>
-                <label>Were you asked for payment?</label><br>   
-                <input type="radio" id="yes" name="payment" value="yes" required>
-                <label for="yes">Yes</label><br>
-                <input type="radio" id="no" name="payment" value="no">
-                <label for="no">No</label><br><br>
-                <labe>Where did you see the ad?</label>
-                <select id="select1" onchange="setForm(value)" name="platform" required>
-                    <option value="">--Please choose an option--</option>
-                    <option value="webform">Website</option>
-                    <option value="emailform">E-mail</option>
-                </select>
-                </div>
-                <div id="webform" style="display: none">
-                    <label>Select the website you saw the ad<label>
-                        <select id="website" name="website" required>
-                            <option value="">--Please choose an option--</option>
-                            <option value="Naukri">Naukri</option>
-                            <option value="Indeed">Indeed</option>
-                            <option value="LinkedIn">LinkedIn</option>
-                            <option value="Monster">Monster</option>
-                        </select><br><br>
-                    <label>Enter account name</label>    
-                    <input type="text" name="accountname" id="accountname" required><br><br>
-                    <label>Enter job posted date</label><br>
-                    <input type="date" id="postdate" name="postdate" min="2020-01-01" max="2021-06-16" required><br><br>
-                    <label>Select a time:</label><br>
-                    <input type="time" id="posttime" name="posttime"><br><br>
-                </div>
-                <div id="emailform" style="display: none">
-                    <label>Enter mail-id you received the job ad</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-                </div>
-                <div id="submitdiv">
-                <input type="submit" value="Submit">
-                </div>
-                </form>
-                <script>
-                    country_select = document.getElementById('country');
-                    state_select = document.getElementById('state');
-                    city_select = document.getElementById('city');
-             
-                    country_select.onchange = function(){
-                    country = country_select.value;
-                    fetch('state/' + country).then(function(response)
-                    {
-                        response.json().then(function(data) 
-                        {
-                            optionHTML = '';
-                            for (state of data.statecountry) 
-                            {
-                                optionHTML += '<option value="' + state.id +'">' + state.name + '</option>'
-                            }
-                            state_select.innerHTML = optionHTML;
-                            });
-                        });
-                    }
-                    state_select.onchange = function(){
-                    city = state_select.value; 
-                    fetch('city/' + city).then(function(response){
-                    response.json().then(function(data) 
-                    {
-                        optionHTML = '';
-                        for (city_rs of data.citylist) 
-                        {
-                            optionHTML += '<option value="' + city_rs.id +'">' + city_rs.name + '</option>'
-                        }
-                        city_select.innerHTML = optionHTML;
-                            });
-                        });
-                    }
-                </script>
+        <br>
+        <h1>
+            Fake job detection
+        </h1>
+        <form action="/form" method="POST">
+            <div class="search_select_box">
+                    <label>Select job title</label>
+                    <br><br>
+                    <select id="title" name="title" placeholder="choose" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in titles %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select location</label>
+                    <br><br>
+                    <select name="location" id="location" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in location %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select department</label>
+                    <br><br>
+                    <select data-live-search="true" name="department" id="department" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in dept %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select salary range</label>
+                    <br><br>
+                    <select data-live-search="true" id="sal_range" name="sal_range" >
+                        <option value="">--Please choose an option--</option>
+                        {% for i in sal %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select required experience</label>
+                    <br><br>
+                    <select data-live-search="true" name="exp" id="exp" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in exp %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select employment type</label>
+                    <br><br>
+                    <select data-live-search="true" name="emp_type" id="emp_type" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in emp_type %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select required education</label>
+                    <br><br>
+                    <select data-live-search="true" name="edu" id="edu" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in edu %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select industry</label>
+                    <br><br>
+                    <select data-live-search="true" id="industry" name="industry" required>
+                        <option value="">--Please choose an option--</option>
+                        {% for i in industry %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label>Select function</label>
+                    <br><br>
+                    <select data-live-search="true" name="function" id="function" >
+                        <option value="">--Please choose an option--</option>
+                        {% for i in function %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </div> 
+                <!-- 6.00 imp -->
+            
+        </form>
     </body>
     <section id=about>
         <h3> <B> ABOUT </B> </h3>
@@ -165,5 +140,4 @@
             <h4>Copyright 2021</h4>
           </div>
         </footer>
-        
 </html>
