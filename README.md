@@ -5,3 +5,5 @@ We developed Reveal, a machine learning-based web application, to identify fake 
 We presented our project work in 2022 IEEE Delhi Section Conference (DELCON) and Published in the year 2022
 
 CITATION: C. Prashanth, D. Chandrasekaran, B. Pandian, K. Duraipandian, T. Chen and M. Sathiyanarayanan, "Reveal: Online Fake Job Advert Detection Application using Machine Learning," 2022 IEEE Delhi Section Conference (DELCON), New Delhi, India, 2022, pp. 1-6, doi: 10.1109/DELCON54057.2022.9752784.
+
+LINK: https://ieeexplore.ieee.org/document/9752784
